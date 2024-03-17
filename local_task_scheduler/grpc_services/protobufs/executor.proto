@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package executor;
+
+// The executor service definition.
+service ExecutorService {
+  // Executes a given task and returns the execution result.
+  rpc ExecuteTask (TaskRequest) returns (TaskResponse) {}
+}
+
+// The request message containing the task details.
+message TaskRequest {
+  string task_id = 1; // Unique identifier for the task
+  string command = 2; // The command to execute, e.g., a shell command or script
+  map<string, string> parameters = 3; // Optional parameters for the task
+}
+
+// The response message containing the results of the task execution.
+message TaskResponse {
+  string task_id = 1; // Echoes back the task ID
+  int32 status = 2; // The execution status, e.g., 0 for success
+  string output = 3; // Output from the task execution
+  string error = 4; // Error message if the task failed
+}

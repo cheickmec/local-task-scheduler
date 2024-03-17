@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package scheduler;
+
+// Importing the Executor's messages for use in the Scheduler service
+import "executor.proto";
+
+// The scheduler service definition.
+service SchedulerService {
+  // Schedules a new task.
+  rpc ScheduleTask (executor.TaskRequest) returns (ScheduleResponse) {}
+
+  // Lists all scheduled tasks.
+  rpc ListTasks (ListTasksRequest) returns (ListTasksResponse) {}
+
+  // Deletes a scheduled task.
+  rpc DeleteTask (DeleteTaskRequest) returns (DeleteTaskResponse) {}
+}
+
+// The response message for scheduling tasks.
+message ScheduleResponse {
+  string task_id = 1; // The ID of the scheduled task
+  bool success = 2; // Whether the task was successfully scheduled
+  string error = 3; // Error message if the scheduling failed
+}
+
+// The request message for listing tasks.
+message ListTasksRequest {}
+
+// The response message for listing tasks.
+message ListTasksResponse {
+  repeated executor.TaskRequest tasks = 1; // The list of scheduled tasks
+}
+
+// The request message for deleting a task.
+message DeleteTaskRequest {
+  string task_id = 1; // The ID of the task to delete
+}
+
+// The response message for deleting tasks.
+message DeleteTaskResponse {
+  bool success = 1; // Whether the task was successfully deleted
+  string error = 2; // Error message if the deletion failed
+}

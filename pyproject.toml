@@ -1,0 +1,34 @@
+[tool.poetry]
+name = "local-task-scheduler"
+version = "0.1.0"
+description = ""
+authors = ["Cheick Berthe <cab25004@vt.edu>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+grpcio = "^1.62.1"
+click = "^8.1.7"
+
+
+[tool.poetry.group.dev.dependencies]
+grpcio-tools = "^1.62.1"
+pytest = "^8.1.1"
+pytest-cov = "^4.1.0"
+black = "^24.3.0"
+isort = "^5.13.2"
+flake8 = "^7.0.0"
+bandit = "^1.7.8"
+safety = "^3.0.1"
+mypy = "^1.9.0"
+types-protobuf = "^4.24.0.20240311"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+pythonpath = ["local_task_scheduler/grpc_services/grpc_types", "local_task_scheduler", "tests"]
+
+[tool.poetry.scripts]
+run-executor = "local_task_scheduler.main:serve"
