@@ -33,7 +33,7 @@ Note: Before running any script, ensure your PYTHONPATH includes the path `local
 ### Installation
 1. Clone the repository:
 ```shell
-git clone https://yourrepositoryurl.git
+git clone https://cheickmec/local-task-scheduler.git
 cd local-task-scheduler
 ```
 1. Install dependencies using Poetry:
